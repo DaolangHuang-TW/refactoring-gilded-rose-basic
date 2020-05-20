@@ -25,30 +25,6 @@ public class Item {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public ItemType getItemType() {
-        return itemType;
-    }
-
-    public int getSellIn() {
-        return sellIn;
-    }
-
-    public void setSellIn(int sellIn) {
-        this.sellIn = sellIn;
-    }
-
-    public void setQuality(int quality) {
-        this.quality = quality;
-    }
-
-    public int getQuality() {
-        return quality;
-    }
-
     public void updateQuality() {
         switch (itemType) {
             case Normal:
