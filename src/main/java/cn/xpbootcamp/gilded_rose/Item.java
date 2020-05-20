@@ -28,46 +28,58 @@ public class Item {
     public void updateQuality() {
         switch (itemType) {
             case Normal:
-                if (quality > 0) {
-                    quality -= 1;
-                }
-                sellIn -= 1;
-                if (sellIn < 0 && quality > 0) {
-                    quality -= 1;
-                }
+                normalItemUpdateQuality();
                 break;
             case AgedBrie:
-                if (quality < 50) {
-                    quality += 1;
-                }
-                sellIn -= 1;
-                if (sellIn < 0 && quality < 50) {
-                    quality += 1;
-                }
+                agedBrieItemUpdateQuality();
                 break;
             case BackstagePasses:
-                if (quality < 50) {
-                    quality += 1;
-                    if (sellIn < 11) {
-                        if (quality < 50) {
-                            quality += 1;
-                        }
-                    }
-
-                    if (sellIn < 6) {
-                        if (quality < 50) {
-                            quality += 1;
-                        }
-                    }
-                }
-                sellIn -= 1;
-
-                if (sellIn < 0) {
-                    quality = 0;
-                }
+                backstagePassesItemUpdateQuality();
                 break;
             case Sulfuras:
                 break;
+        }
+    }
+
+    void normalItemUpdateQuality() {
+        if (quality > 0) {
+            quality -= 1;
+        }
+        sellIn -= 1;
+        if (sellIn < 0 && quality > 0) {
+            quality -= 1;
+        }
+    }
+
+    void agedBrieItemUpdateQuality() {
+        if (quality < 50) {
+            quality += 1;
+        }
+        sellIn -= 1;
+        if (sellIn < 0 && quality < 50) {
+            quality += 1;
+        }
+    }
+
+    void backstagePassesItemUpdateQuality() {
+        if (quality < 50) {
+            quality += 1;
+            if (sellIn < 11) {
+                if (quality < 50) {
+                    quality += 1;
+                }
+            }
+
+            if (sellIn < 6) {
+                if (quality < 50) {
+                    quality += 1;
+                }
+            }
+        }
+        sellIn -= 1;
+
+        if (sellIn < 0) {
+            quality = 0;
         }
     }
 
