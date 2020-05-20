@@ -8,14 +8,29 @@ public class Item {
 
     private int quality;
 
+    private ItemType itemType;
+
     public Item(String name, int sellIn, int quality) {
         this.name = name;
         this.sellIn = sellIn;
         this.quality = quality;
+        if (name == ItemType.AgedBrie.getName()) {
+            this.itemType = ItemType.AgedBrie;
+        } else if (name == ItemType.BackstagePasses.getName()) {
+            this.itemType = ItemType.BackstagePasses;
+        } else if (name == ItemType.Sulfuras.getName()) {
+            this.itemType = ItemType.Sulfuras;
+        } else {
+            this.itemType = ItemType.Normal;
+        }
     }
 
     public String getName() {
         return name;
+    }
+
+    public ItemType getItemType() {
+        return itemType;
     }
 
     public int getSellIn() {
