@@ -49,6 +49,51 @@ public class Item {
         return quality;
     }
 
+    public void updateQuality() {
+        switch (itemType) {
+            case Normal:
+                if (quality > 0) {
+                    quality -= 1;
+                }
+                sellIn -= 1;
+                if (sellIn < 0 && quality > 0) {
+                    quality -= 1;
+                }
+                break;
+            case AgedBrie:
+                if (quality < 50) {
+                    quality += 1;
+                }
+                sellIn -= 1;
+                if (sellIn < 0 && quality < 50) {
+                    quality += 1;
+                }
+                break;
+            case BackstagePasses:
+                if (quality < 50) {
+                    quality += 1;
+                    if (sellIn < 11) {
+                        if (quality < 50) {
+                            quality += 1;
+                        }
+                    }
+
+                    if (sellIn < 6) {
+                        if (quality < 50) {
+                            quality += 1;
+                        }
+                    }
+                }
+                sellIn -= 1;
+
+                if (sellIn < 0) {
+                    quality = 0;
+                }
+                break;
+            case Sulfuras:
+                break;
+        }
+    }
 
     @Override
     public String toString() {
